@@ -15,6 +15,6 @@ entries:
     sources:
     - https://github.com/cockroachdb/cockroach
     urls:
-    - https://contargo.github.io/helm-charts/contargo-cockroachdb-9.2.0.tgz
+    - https://contargo.github.io/helm-charts/chart_repo/contargo-cockroachdb-9.2.0.tgz
     version: 9.2.0
 generated: "2022-11-28T16:31:48.30139851+01:00"
