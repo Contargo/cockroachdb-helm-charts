@@ -94,6 +94,8 @@ spec:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: true
+            runAsUser: 1000
+            runAsNonRoot: true
           {{- end }}
           {{- end }}
           # Run the command in an `while true` loop because this Job is bound
