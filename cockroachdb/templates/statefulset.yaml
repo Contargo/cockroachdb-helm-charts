@@ -55,19 +55,6 @@ spec:
       {{- if .Values.tls.enabled }}
       initContainers:
         - name: copy-certs
-          image: {{ .Values.tls.copyCerts.image | quote }}
-          imagePullPolicy: {{ .Values.tls.selfSigner.image.pullPolicy | quote }}
-          {{- if eq (include "cockroachdb.securityContext.versionValidation" .) "true" }}
-          {{- if .Values.statefulset.securityContext.enabled }}
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            privileged: false
-            readOnlyRootFilesystem: true
-          {{- end }}
-          {{- end }}
           command:
             - /bin/sh
             - -c
