@@ -3,7 +3,23 @@ entries:
   contargo-cockroachdb:
   - apiVersion: v1
     appVersion: 22.1.11
-    created: "2022-11-28T16:31:48.304870737+01:00"
+    created: "2022-12-02T12:21:29.442316735+01:00"
+    description: CockroachDB is a scalable, survivable, strongly-consistent SQL database.
+    digest: 24fff7389c2f0cb3cf74b20d8f0b3d024ac9475fc248abf4f3a9534f9a1f7702
+    home: https://www.cockroachlabs.com
+    icon: https://raw.githubusercontent.com/cockroachdb/cockroach/master/docs/media/cockroach_db.png
+    maintainers:
+    - email: helm-charts@cockroachlabs.com
+      name: cockroachlabs
+    name: contargo-cockroachdb
+    sources:
+    - https://github.com/cockroachdb/cockroach
+    urls:
+    - https://contargo.github.io/helm-charts/chart_repo/contargo-cockroachdb-9.2.1.tgz
+    version: 9.2.1
+  - apiVersion: v1
+    appVersion: 22.1.11
+    created: "2022-12-02T12:21:29.436143134+01:00"
     description: CockroachDB is a scalable, survivable, strongly-consistent SQL database.
     digest: 03d9fac71ad3ca89e5de8c5ca8e5f33e6e586a5cafed61044f883d4f772aafef
     home: https://www.cockroachlabs.com
@@ -17,4 +33,4 @@ entries:
     urls:
     - https://contargo.github.io/helm-charts/chart_repo/contargo-cockroachdb-9.2.0.tgz
     version: 9.2.0
-generated: "2022-11-28T16:31:48.30139851+01:00"
+generated: "2022-12-02T12:21:29.432275102+01:00"
