@@ -37,6 +37,14 @@ spec:
       annotations: {{- toYaml . | nindent 8 }}
     {{- end }}
     spec:
+    {{- if eq (include "cockroachdb.securityContext.versionValidation" .) "true" }}
+    {{- if .Values.securityContext.enabled }}
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsNonRoot: true
+    {{- end }}
+    {{- end }}
       restartPolicy: OnFailure
       terminationGracePeriodSeconds: 0
     {{- if or .Values.image.credentials (and .Values.tls.enabled .Values.tls.selfSigner.image.credentials (not .Values.tls.certs.provided) (not .Values.tls.certs.certManager)) }}
@@ -85,19 +93,6 @@ spec:
         - name: cluster-init
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
-          {{- if eq (include "cockroachdb.securityContext.versionValidation" .) "true" }}
-          {{- if .Values.securityContext.enabled }}
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            privileged: false
-            readOnlyRootFilesystem: true
-            runAsUser: 1000
-            runAsNonRoot: true
-          {{- end }}
-          {{- end }}
           # Run the command in an `while true` loop because this Job is bound
           # to come up before the CockroachDB Pods (due to the time needed to
           # get PersistentVolumes attached to Nodes), and sleeping 5 seconds
