@@ -55,6 +55,8 @@ spec:
       {{- if .Values.tls.enabled }}
       initContainers:
         - name: copy-certs
+          image: {{ .Values.tls.copyCerts.image | quote }}
+          imagePullPolicy: {{ .Values.tls.selfSigner.image.pullPolicy | quote }}
           command:
             - /bin/sh
             - -c
