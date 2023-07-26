@@ -32,6 +32,11 @@ metadata:
 {{- toYaml .Values.ingress.labels | nindent 4 }}
 {{- end }}
 spec:
+{{- if .Values.ingress.spec }}
+{{- range $key, $value := .Values.ingress.spec }}
+  {{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
   rules:
   {{- if .Values.ingress.hosts }}
   {{- range $host := .Values.ingress.hosts }}
